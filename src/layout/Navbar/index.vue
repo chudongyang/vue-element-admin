@@ -34,7 +34,7 @@ export default {
   created () {},
   methods: {
     ...mapActions('app', ['ToggleSidebar']),
-    bindToggleSidebar() { // 切换sidebar
+    bindToggleSidebar () { // 切换sidebar
       console.log(this.$store);
       this.ToggleSidebar();
     }

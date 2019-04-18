@@ -11,7 +11,7 @@
         active-text-color="#409EFF"
         :collapse-transition="false"
         >
-        <sidebar-item v-for="route in permissionRoutes" :key="route.path" :item="route" :base-path="route.path" />
+        <sidebar-item v-for="route in permissionRoutes" :key="route.path" :a="route.path" :item="route" :base-path="route.path" />
       </el-menu>
     </el-scrollbar>
   </div>
@@ -37,7 +37,7 @@ export default {
     }
   },
   created () {
-    console.log(this.$router);
+    console.log(this.$route.path);
   },
   methods: {},
   components: {
@@ -46,7 +46,7 @@ export default {
   }
 };
 </script>
-<style scoped lang='stylus'>
+<style lang='stylus'>
   .sidebar-container{
     height: 100%;
     width: $sideBarWidth;
@@ -56,5 +56,14 @@ export default {
     .el-menu{
       border: none;
     }
+  }
+  .scrollbar-wrapper {
+    overflow-x: hidden !important;
+    .el-scrollbar__view {
+      height: 100%;
+    }
+  }
+  .el-scrollbar {
+    height: calc(100% - 50px);
   }
 </style>

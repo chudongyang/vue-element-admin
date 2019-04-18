@@ -11,7 +11,7 @@
 import Sidebar from './Sidebar';
 import Navbar from './Navbar';
 import AppMain from './AppMain';
-import {mapGetters} from 'vuex';
+import { mapGetters } from 'vuex';
 
 export default {
   data () {
@@ -40,7 +40,7 @@ export default {
       display: flex;
       flex-direction: column;
     }
-    .el-submenu .el-menu-item{
+    .el-submenu .el-menu-item, .nest-menu .el-submenu .el-submenu__title{
       background-color: #1f2d3d !important;
     }
     &.hide-sidebar{

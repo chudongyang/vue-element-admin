@@ -17,6 +17,11 @@ export default {
       levelList: [] // 面包屑的路径集合，根据路径的变化动态改变
     };
   },
+  watch: {
+    $route() {
+      this.getBreadcrumb();
+    }
+  },
   created () {
     this.getBreadcrumb();
   },
@@ -24,24 +29,25 @@ export default {
     getBreadcrumb () { // 获取面包屑的导航列表
       let matched = this.$route.matched.filter(item => item.name);
       const first = matched[0];
-      if (first && first.name.trim().toLocaleLowerCase() !== 'Index'.toLocaleLowerCase()) {
-        matched = [{ path: '/index', meta: { title: '首页' } }].concat(matched);
+      if (first && first.name.trim().toLocaleLowerCase() !== 'Dashboard'.toLocaleLowerCase()) {
+        matched = [{ path: '/dashboard', meta: { title: '面板' } }].concat(matched);
       }
       this.levelList = matched.filter(item => item.meta && item.meta.title && item.meta.breadcrumb !== false);
+    },
+    pathCompile (path) { // 处理带参数的路径
+      let { params } = this.$route;
+      let toPath = pathToRegexp.compile(path);
+      return toPath(params);
+    },
+    bindBreadcrumb (item) { // 点击面包屑跳转
+      console.log(item);
+      let { redirect, path } = item;
+      if (redirect) {
+        this.$router.push(redirect);
+        return;
+      }
+      this.$router.push(this.pathCompile(path));
     }
-  },
-  pathCompile (path) { // 处理带参数的路径
-    let { params } = this.$route;
-    let toPath = pathToRegexp.compile(path);
-    return toPath(params);
-  },
-  bindBreadcrumb (item) { // 点击面包屑跳转
-    let { redirect, path } = item;
-    if (redirect) {
-      this.$router.push(redirect);
-      return;
-    }
-    this.$router.push(this.pathCompile(path));
   }
 };
 </script>

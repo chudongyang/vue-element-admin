@@ -2,16 +2,18 @@
   <!-- 路由元信息中 hidden为true，就不显示在侧边栏上-->
   <div class="menu-wrapper" v-if="!item.hidden">
     <template v-if="hasOneShowingChild(item.children, item) && (!onlyOneChild.children||onlyOneChild.noShowingChildren) && !item.alwaysShow">
-      <el-menu-item :index="resolvePath(item.path)">
-        <menu-item v-if="item.meta" :icon="item.meta.icon" :title="item.meta.title"></menu-item>
-      </el-menu-item>
+      <app-link :path="resolvePath(onlyOneChild.path)">
+        <el-menu-item :index="resolvePath(onlyOneChild.path)">
+          <menu-item v-if="item.meta" :icon="item.meta.icon" :title="item.meta.title"></menu-item>
+        </el-menu-item>
+      </app-link>
     </template>
 
     <el-submenu v-else :index="resolvePath(item.path)" popper-append-to-body>
       <template slot="title">
-        <menu-item :icon="item.meta.icon" :title="item.meta.title"></menu-item>
+        <menu-item v-if="item.meta" :icon="item.meta.icon" :title="item.meta.title"></menu-item>
       </template>
-      <sidebar-item v-for="child in item.children" :item="child" :key="child.path" :is-nest="true"></sidebar-item>
+      <sidebar-item v-for="child in item.children" :item="child" :key="child.path" :is-nest="true" class="nest-menu" :base-path="resolvePath(child.path)"></sidebar-item>
     </el-submenu>
   </div>
 </template>
@@ -46,6 +48,7 @@ export default {
   created () {
     // 如果该路由下只有一个要显示的子路由，则保存子路由；没有符合条件的子路由，则保存父级路由
     this.onlyOneChild = null;
+    console.log(this.$attrs);
   },
   methods: {
     hasOneShowingChild (children = [], parent) { // 判断该路由下的子路由
@@ -72,9 +75,9 @@ export default {
       return false;
     },
     resolvePath (routePath) {
-      if (isExternal(routePath)) {
-        return routePath;
-      }
+      // if (isExternal(routePath)) {
+      //   return routePath;
+      // }
       return path.resolve(this.basePath, routePath);
     }
   },

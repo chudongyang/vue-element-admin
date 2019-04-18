@@ -1,13 +1,16 @@
 <template>
-  <div></div>
+  <router-link :to="path">
+    <slot></slot>
+  </router-link>
 </template>
 <script>
 export default {
-  data () {
-    return {};
-  },
-  created () {},
-  methods: {}
+  props: {
+    path: { // 跳转的路由
+      type: String,
+      default: '/'
+    }
+  }
 };
 </script>
 <style scoped lang='stylus'></style>

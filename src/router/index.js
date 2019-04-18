@@ -37,6 +37,75 @@ export const constantRoutes = [
     ]
   },
   {
+    path: '/menu',
+    redirect: '/menu/menu1',
+    component: Layout,
+    name: 'menu',
+    meta: { title: 'menu', icon: 'drag' },
+    children: [
+      {
+        path: 'menu1',
+        component: () => import('@/views/menu/menu1.vue'),
+        meta: { title: 'menu1' },
+        name: 'menu1',
+        children: [
+          {
+            path: 'menu1-1',
+            component: () => import('@/views/menu/menu1-1.vue'),
+            meta: { title: 'menu1-1' },
+            name: 'menu1-1',
+          },
+          {
+            path: 'menu1-2',
+            component: () => import('@/views/menu/menu1-2.vue'),
+            meta: { title: 'menu1-2' },
+            name: 'menu1-2',
+          }
+        ]
+      },
+      {
+        path: 'menu2',
+        component: () => import('@/views/menu/menu2.vue'),
+        meta: { title: 'menu2' },
+        name: 'menu2',
+        children: [
+          {
+            path: 'menu2-1',
+            component: () => import('@/views/menu/menu2-1.vue'),
+            meta: { title: 'menu2-1' },
+            name: 'menu2-1',
+          },
+          {
+            path: 'menu2-2',
+            component: () => import('@/views/menu/menu2-2.vue'),
+            meta: { title: 'menu2-2' },
+            name: 'menu2-2',
+            children: [
+              {
+                path: 'menu2-2-1',
+                component: () => import('@/views/menu/menu2-2-1.vue'),
+                meta: { title: 'menu2-2-1' },
+                name: 'menu2-2-1',
+              },
+              {
+                path: 'menu2-2-2',
+                component: () => import('@/views/menu/menu2-2-2.vue'),
+                meta: { title: 'menu2-2-2' },
+                name: 'menu2-2-2',
+              }
+            ]
+          }
+        ]
+      },
+      {
+        path: 'menu3',
+        component: () => import('@/views/menu/menu3.vue'),
+        meta: { title: 'menu3' },
+        name: 'menu3',
+      }
+    ]
+  },
+  {
     path: '/example',
     component: Layout,
     redirect: '/example/table',
@@ -47,21 +116,21 @@ export const constantRoutes = [
         path: 'table',
         name: 'table',
         component: () => import(/* webpackChunkName: "table" */ '@/views/example/Table.vue'),
-        meta: { title: 'table', icon: 'table' },
+        meta: { title: 'table', icon: 'table' }
       },
       {
         path: 'tree',
         name: 'tree',
         component: () => import(/* webpackChunkName: "tree" */ '@/views/example/Tree.vue'),
-        meta: { title: 'tree', icon: 'tree' },
+        meta: { title: 'tree', icon: 'tree' }
       }
     ]
-  },
-  {
-    path: '*',
-    redirect: '/404',
-    hidden: true
   }
+  // {
+  //   path: '*',
+  //   redirect: '/404',
+  //   hidden: true
+  // }
 ];
 
 // 定义根据用户的角色动态加载的路由
@@ -81,7 +150,7 @@ export const asyncRoutes = [
         path: 'index',
         name: 'permissionIndex',
         component: () => import(/* webpackChunkName: "permissionIndex" */ '@/views/permission/Index.vue'),
-        meta: { title: '权限页', icon: 'eye' },
+        meta: { title: '权限页', icon: 'eye' }
       },
       {
         path: 'editor',

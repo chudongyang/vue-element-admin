@@ -5,7 +5,7 @@ const state = {
   sidebar: {
     opened: !+Cookie.get('sidebarStatus') // 左侧侧边栏sidebar的展开状态
   }
-}
+};
 
 const mutations = {
   TOGGLE_SIDEBAR: (state) => { // 切换sidebar的状态
@@ -16,17 +16,17 @@ const mutations = {
     }
     state.sidebar.opened = !state.sidebar.opened;
   }
-}
+};
 
 const actions = {
-  ToggleSidebar({commit}) {
+  ToggleSidebar ({ commit }) {
     commit('TOGGLE_SIDEBAR');
   }
-}
+};
 
 export default {
   namespaced: true,
   state,
   mutations,
   actions
-}
+};
