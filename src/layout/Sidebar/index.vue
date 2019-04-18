@@ -1,10 +1,15 @@
 <template>
   <div class="sidebar-container">
-    <logo />
+    <logo :collapse="isCollapse"/>
     <el-scrollbar wrap-class="scrollbar-wrapper">
       <el-menu
-        :default-active="activeMenu"
+        :default-active="$route.path"
+        :collapse="isCollapse"
         mode="vertical"
+        background-color="#304156"
+        text-color="#bfcbd9"
+        active-text-color="#409EFF"
+        :collapse-transition="false"
         >
         <sidebar-item v-for="route in permissionRoutes" :key="route.path" :item="route" :base-path="route.path" />
       </el-menu>
@@ -13,7 +18,8 @@
 </template>
 <script>
 import { mapGetters } from 'vuex';
-import Logo from '@/components/Logo.vue';
+import Logo from './Logo.vue';
+import SidebarItem from './SidebarItem';
 
 export default {
   data () {
@@ -22,15 +28,21 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(['permissionRoutes']),
+    ...mapGetters(['permissionRoutes', 'sidebar']),
     activeMenu () { // 当前激活菜单的index
       return '1';
+    },
+    isCollapse () { // 是否水平折叠起菜单，默认是false
+      return !this.sidebar.opened;
     }
   },
-  created () {},
+  created () {
+    console.log(this.$router);
+  },
   methods: {},
   components: {
-    Logo
+    Logo,
+    SidebarItem
   }
 };
 </script>
@@ -41,6 +53,8 @@ export default {
     overflow: hidden;
     transition: width 0.28s;
     background-color: rgb(48, 65, 86);
-
+    .el-menu{
+      border: none;
+    }
   }
 </style>

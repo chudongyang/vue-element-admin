@@ -6,36 +6,61 @@ Vue.use(Router);
 // 定义不变的基础路由(所有人都可以访问的路由)
 export const constantRoutes = [
   {
-    path: '/',
-    redirect: '/index'
-  },
-  {
-    path: '',
-    component: Layout,
-    redirect: 'index',
-    children: [
-      {
-        path: 'index',
-        name: 'Index',
-        component: () => import(/* webpackChunkName: "index" */ '@/views/Index.vue'),
-        meta: { title: '首页', icon: 'index', noCache: true, affix: true }
-      }
-    ]
-  },
-  {
     path: '/login',
-    name: 'login',
-    component: () => import(/* webpackChunkName: "login" */ '@/views/Login.vue')
+    component: () => import(/* webpackChunkName: "login" */ '@/views/login/Login.vue'),
+    hidden: true
   },
   {
     path: '/404',
     name: '404',
-    component: () => import(/* webpackChunkName: "404" */ '@/views/404.vue')
+    component: () => import(/* webpackChunkName: "404" */ '@/views/error-page/404.vue'),
+    hidden: true
   },
   {
     path: '401',
     name: '401',
-    component: () => import(/* webpackChunkName: "401" */ '@/views/401.vue')
+    component: () => import(/* webpackChunkName: "401" */ '@/views/error-page/401.vue'),
+    hidden: true
+  },
+  {
+    path: '/',
+    redirect: '/dashboard',
+    component: Layout,
+    name: 'Dashboard',
+    meta: { title: '面板', icon: 'dashboard' },
+    children: [
+      {
+        path: 'dashboard',
+        component: () => import(/* webpackChunkName: "dashboard" */ '@/views/dashboard/index.vue'),
+        meta: { title: 'dashboard', icon: 'dashboard' }
+      }
+    ]
+  },
+  {
+    path: '/example',
+    component: Layout,
+    redirect: '/example/table',
+    name: 'example',
+    meta: { title: '案例', icon: 'example' },
+    children: [
+      {
+        path: 'table',
+        name: 'table',
+        component: () => import(/* webpackChunkName: "table" */ '@/views/example/Table.vue'),
+        meta: { title: 'table', icon: 'table' },
+      },
+      {
+        path: 'tree',
+        name: 'tree',
+        component: () => import(/* webpackChunkName: "tree" */ '@/views/example/Tree.vue'),
+        meta: { title: 'tree', icon: 'tree' },
+      }
+    ]
+  },
+  {
+    path: '*',
+    redirect: '/404',
+    hidden: true
   }
 ];
 
@@ -45,15 +70,28 @@ export const asyncRoutes = [
     path: '/permission',
     component: Layout,
     redirect: '/permission/index',
+    name: 'permission',
     meta: {
-      title: 'permission',
+      title: '权限',
+      icon: 'nested',
       roles: ['admin', 'editor']
     },
     children: [
       {
         path: 'index',
-        name: 'indexPermission',
-        component: () => import(/* webpackChunkName: "index" */ '@/views/Index.vue')
+        name: 'permissionIndex',
+        component: () => import(/* webpackChunkName: "permissionIndex" */ '@/views/permission/Index.vue'),
+        meta: { title: '权限页', icon: 'eye' },
+      },
+      {
+        path: 'editor',
+        name: 'permissionEditor',
+        component: () => import(/* webpackChunkName: "permissionEditor" */ '@/views/permission/Editor.vue'),
+        meta: {
+          roles: ['admin'],
+          title: '编辑页',
+          icon: 'edit'
+        }
       }
     ]
   }

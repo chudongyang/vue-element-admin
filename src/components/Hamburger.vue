@@ -1,6 +1,7 @@
 <template>
-  <div class="hamburger-content">
+  <div class="hamburger-content hover-effect">
     <svg
+      :class="{'is-active': isActive}"
       class="hamburger"
       viewBox="0 0 1024 1024"
       xmlns="http://www.w3.org/2000/svg"
@@ -13,11 +14,12 @@
 </template>
 <script>
 export default {
-  data () {
-    return {};
-  },
-  created () {},
-  methods: {}
+  props: {
+    isActive: { // 图标的状态
+      type: Boolean,
+      default: true
+    }
+  }
 };
 </script>
 <style scoped lang='stylus'>
@@ -32,5 +34,8 @@ export default {
     vertical-align: middle;
     width: 20px;
     height: 20px;
+    &.is-active{
+      transform: rotate(180deg);
+    }
   }
 </style>

@@ -14,6 +14,13 @@
 --router            页面的路由
 --service           页面的请求相关
 --store             vuex相关
+  |--modules        功能模块
+    |--permission.js允许路由的模块(包含用户的state、mutations、actions）
+    |--user.js      用户模块（包含用户的state、mutations、actions）
+  |--getters.js     store 的计算属性
+  |--index.js       store的出口文件
+  |--mutations.js   更改state状态的方法
+  |--state.js       vuex的状态
 --views             放置页面级组件
 ```
 
@@ -38,3 +45,16 @@
   - NProgress.start(); 进度条开始
   - NProgress.done(); 进度条结束
   - 查看更多[nprogress](https://github.com/rstacruz/nprogress/)
+- js-cookie 一个简单、轻量的处理cookie的js的API
+  - 设置cookie
+    ```
+      Cookie.set('name', 'value', [options])
+    ```
+  - 获取cookie
+    ```
+      Cookie.get('name')
+    ```
+  - 删除cookie
+    ```
+      Cookies.remove('name')
+    ```

@@ -1,7 +1,5 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import state from './state';
-import mutations from './mutations';
 import * as getters from './getters';
 // import permission from './modules/permission';
 
@@ -18,9 +16,7 @@ const modules = modulesFiles.keys().reduce((modules, modulePath) => {
 }, {});
 
 const store = new Vuex.Store({
-  state,
   getters,
-  mutations,
   modules
   // modules: {
   //   permission

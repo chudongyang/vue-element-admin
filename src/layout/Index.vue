@@ -1,5 +1,5 @@
 <template>
-  <div class="app-wrapper">
+  <div class="app-wrapper" :class="{'hide-sidebar': !sidebar.opened}">
     <sidebar />
     <div class="main-container">
       <navbar />
@@ -11,10 +11,14 @@
 import Sidebar from './Sidebar';
 import Navbar from './Navbar';
 import AppMain from './AppMain';
+import {mapGetters} from 'vuex';
 
 export default {
   data () {
     return {};
+  },
+  computed: {
+    ...mapGetters(['sidebar'])
   },
   created () {},
   methods: {},
@@ -25,7 +29,7 @@ export default {
   }
 };
 </script>
-<style scoped lang='stylus'>
+<style lang='stylus'>
   .app-wrapper{
     position: relative;
     display: flex;
@@ -35,6 +39,25 @@ export default {
       flex-grow: 1;
       display: flex;
       flex-direction: column;
+    }
+    .el-submenu .el-menu-item{
+      background-color: #1f2d3d !important;
+    }
+    &.hide-sidebar{
+      .sidebar-container{
+        width: 54px;
+      }
+      .el-menu{
+        width: 54px;
+      }
+      .menu-title{
+        display: none;
+        height: 0;
+        width: 0;
+      }
+      .el-submenu .el-submenu__icon-arrow{
+        display: none;
+      }
     }
   }
 </style>
