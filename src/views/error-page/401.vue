@@ -2,6 +2,6 @@
   <div>401 没有权限</div>
 </template>
 <script>
-export default {};
+export default {}
 </script>
 <style scoped lang='stylus'></style>

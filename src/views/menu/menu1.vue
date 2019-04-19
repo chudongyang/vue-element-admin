@@ -1,13 +1,13 @@
 <template>
-  <div></div>
+  <div>我是menu下的menu1页面</div>
 </template>
 <script>
 export default {
   data () {
-    return {};
+    return {}
   },
   created () {},
   methods: {}
-};
+}
 </script>
 <style scoped lang='stylus'></style>

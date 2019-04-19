@@ -20,13 +20,13 @@
   </div>
 </template>
 <script>
-import Hamburger from '@/components/Hamburger.vue';
-import Breadcrumb from '@/components/Breadcrumb';
-import { mapGetters, mapActions } from 'vuex';
+import Hamburger from '@/components/Hamburger.vue'
+import Breadcrumb from '@/components/Breadcrumb'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   data () {
-    return {};
+    return {}
   },
   computed: {
     ...mapGetters(['avatar', 'sidebar'])
@@ -35,15 +35,14 @@ export default {
   methods: {
     ...mapActions('app', ['ToggleSidebar']),
     bindToggleSidebar () { // 切换sidebar
-      console.log(this.$store);
-      this.ToggleSidebar();
+      this.ToggleSidebar()
     }
   },
   components: {
     Hamburger,
     Breadcrumb
   }
-};
+}
 </script>
 <style scoped lang='stylus'>
   .navbar-container{

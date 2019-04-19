@@ -20,7 +20,7 @@ export default {
       default: true
     }
   }
-};
+}
 </script>
 <style scoped lang='stylus'>
   .hamburger-content{

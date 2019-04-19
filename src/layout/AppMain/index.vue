@@ -8,15 +8,17 @@
 <script>
 export default {
   data () {
-    return {};
+    return {}
   },
   created () {},
   methods: {}
-};
+}
 </script>
 <style scoped lang='stylus'>
   .app-main-container{
+    padding: 20px;
     flex-grow: 1;
+    box-sizing: border-box;
   }
   /*fade-transform*/
   .fade-transform-leave-active,

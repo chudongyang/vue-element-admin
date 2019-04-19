@@ -23,11 +23,11 @@ export default {
     return {
       logo: 'https://wpimg.wallstcn.com/69a1c46c-eb1c-4b46-8bd4-e9e686ef5251.png',
       title: 'Vue Element Admin'
-    };
+    }
   },
   created () {},
   methods: {}
-};
+}
 </script>
 <style scoped lang='stylus'>
   /* 不能定义leave-active的动画 */

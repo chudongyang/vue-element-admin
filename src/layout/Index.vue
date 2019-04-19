@@ -8,14 +8,14 @@
   </div>
 </template>
 <script>
-import Sidebar from './Sidebar';
-import Navbar from './Navbar';
-import AppMain from './AppMain';
-import { mapGetters } from 'vuex';
+import Sidebar from './Sidebar'
+import Navbar from './Navbar'
+import AppMain from './AppMain'
+import { mapGetters } from 'vuex'
 
 export default {
   data () {
-    return {};
+    return {}
   },
   computed: {
     ...mapGetters(['sidebar'])
@@ -27,7 +27,7 @@ export default {
     Navbar,
     AppMain
   }
-};
+}
 </script>
 <style lang='stylus'>
   .app-wrapper{

@@ -58,3 +58,9 @@
     ```
       Cookies.remove('name')
     ```
+
+
+
+### server.js文件说明
+- 采用node的express框架编写后台代码
+- 使用jwt(JSON Web Tokens)第三方node插件生成token

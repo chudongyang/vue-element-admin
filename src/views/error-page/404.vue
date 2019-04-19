@@ -2,6 +2,6 @@
   <div>404 页面走丢了</div>
 </template>
 <script>
-export default {};
+export default {}
 </script>
 <style scoped lang='stylus'></style>

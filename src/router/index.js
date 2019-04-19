@@ -1,7 +1,7 @@
-import Vue from 'vue';
-import Router from 'vue-router';
-import Layout from '@/layout/Index.vue';
-Vue.use(Router);
+import Vue from 'vue'
+import Router from 'vue-router'
+import Layout from '@/layout/Index.vue'
+Vue.use(Router)
 
 // 定义不变的基础路由(所有人都可以访问的路由)
 export const constantRoutes = [
@@ -53,13 +53,13 @@ export const constantRoutes = [
             path: 'menu1-1',
             component: () => import('@/views/menu/menu1-1.vue'),
             meta: { title: 'menu1-1' },
-            name: 'menu1-1',
+            name: 'menu1-1'
           },
           {
             path: 'menu1-2',
             component: () => import('@/views/menu/menu1-2.vue'),
             meta: { title: 'menu1-2' },
-            name: 'menu1-2',
+            name: 'menu1-2'
           }
         ]
       },
@@ -73,7 +73,7 @@ export const constantRoutes = [
             path: 'menu2-1',
             component: () => import('@/views/menu/menu2-1.vue'),
             meta: { title: 'menu2-1' },
-            name: 'menu2-1',
+            name: 'menu2-1'
           },
           {
             path: 'menu2-2',
@@ -85,13 +85,13 @@ export const constantRoutes = [
                 path: 'menu2-2-1',
                 component: () => import('@/views/menu/menu2-2-1.vue'),
                 meta: { title: 'menu2-2-1' },
-                name: 'menu2-2-1',
+                name: 'menu2-2-1'
               },
               {
                 path: 'menu2-2-2',
                 component: () => import('@/views/menu/menu2-2-2.vue'),
                 meta: { title: 'menu2-2-2' },
-                name: 'menu2-2-2',
+                name: 'menu2-2-2'
               }
             ]
           }
@@ -101,7 +101,7 @@ export const constantRoutes = [
         path: 'menu3',
         component: () => import('@/views/menu/menu3.vue'),
         meta: { title: 'menu3' },
-        name: 'menu3',
+        name: 'menu3'
       }
     ]
   },
@@ -131,7 +131,7 @@ export const constantRoutes = [
   //   redirect: '/404',
   //   hidden: true
   // }
-];
+]
 
 // 定义根据用户的角色动态加载的路由
 export const asyncRoutes = [
@@ -164,17 +164,17 @@ export const asyncRoutes = [
       }
     ]
   }
-];
+]
 
 // 封装生成路由的函数
 const createRouter = () => new Router({
   mode: 'history',
   scrollBehavior () {
-    return { x: 0, y: 0 };
+    return { x: 0, y: 0 }
   },
   routes: constantRoutes
-});
+})
 
-const router = createRouter();
+const router = createRouter()
 
-export default router;
+export default router

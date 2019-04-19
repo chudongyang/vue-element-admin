@@ -9,9 +9,12 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
     "core-js": "^2.6.5",
     "element-ui": "^2.3.6",
+    "express": "^4.16.4",
     "js-cookie": "^2.2.0",
+    "jsonwebtoken": "^8.5.1",
     "nprogress": "^0.2.0",
     "path-to-regexp": "^3.0.0",
     "vue": "^2.6.6",
@@ -43,12 +46,7 @@
       "plugin:vue/essential",
       "@vue/standard"
     ],
-    "rules": {
-      "semi": [
-        2,
-        "always"
-      ]
-    },
+    "rules": {},
     "parserOptions": {
       "parser": "babel-eslint"
     }

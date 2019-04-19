@@ -17,34 +17,31 @@
   </div>
 </template>
 <script>
-import { mapGetters } from 'vuex';
-import Logo from './Logo.vue';
-import SidebarItem from './SidebarItem';
+import { mapGetters } from 'vuex'
+import Logo from './Logo.vue'
+import SidebarItem from './SidebarItem'
 
 export default {
   data () {
     return {
 
-    };
+    }
   },
   computed: {
     ...mapGetters(['permissionRoutes', 'sidebar']),
     activeMenu () { // 当前激活菜单的index
-      return '1';
+      return '1'
     },
     isCollapse () { // 是否水平折叠起菜单，默认是false
-      return !this.sidebar.opened;
+      return !this.sidebar.opened
     }
-  },
-  created () {
-    console.log(this.$route.path);
   },
   methods: {},
   components: {
     Logo,
     SidebarItem
   }
-};
+}
 </script>
 <style lang='stylus'>
   .sidebar-container{
