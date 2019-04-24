@@ -4,7 +4,8 @@ import Cookie from 'js-cookie'
 const state = {
   sidebar: {
     opened: !+Cookie.get('sidebarStatus') // 左侧侧边栏sidebar的展开状态
-  }
+  },
+  network: false // 默认没有断网，不显示断网的组件
 }
 
 const mutations = {
@@ -15,6 +16,9 @@ const mutations = {
       Cookie.set('sidebarStatus', 0)
     }
     state.sidebar.opened = !state.sidebar.opened
+  },
+  SET_NETWORK: (state, bool) => { // 设置网络的状态
+    state.network = bool
   }
 }
 

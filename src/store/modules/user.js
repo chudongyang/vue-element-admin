@@ -1,5 +1,5 @@
 const state = {
-  token: '', // 用户的token
+  token: '1234', // 用户的token
   name: '', // 用户的名字
   avatar: '', // 用户的头像
   roles: [] // 用户的路由权限

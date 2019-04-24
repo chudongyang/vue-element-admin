@@ -24,6 +24,8 @@
   </div>
 </template>
 <script>
+import UserService from '@/service/User.js'
+
 export default {
   data () {
     // 必须在el-form-item组件上加上prop属性，校验规则才能生效
@@ -54,22 +56,26 @@ export default {
         username: [{ required: true, trigger: 'blur', validator: validatorUsername }],
         password: [{ required: true, trigger: 'blur', validator: validatorPassword }]
       },
-      passwordType: 'password' // 密码输入框的类型
+      passwordType: 'password', // 密码输入框的类型
+      userService: {} // UserService的实例
     }
   },
   created () {
+    this.userService = new UserService()
   },
   methods: {
-    togglePasswordType() { // 切换密码框的type类型，并改变图标的显示
+    togglePasswordType () { // 切换密码框的type类型，并改变图标的显示
       if (this.passwordType === 'password') {
         this.passwordType = 'text'
       } else {
-        console.log(1111111);
+        console.log(1111111)
         this.passwordType = 'password'
       }
     },
-    bindLogin() { // 点击登录
-
+    bindLogin () { // 点击登录
+      this.userService.userLogin(this.loginModel).then(res => {
+        console.log(res, 1111111)
+      })
     }
   }
 }
