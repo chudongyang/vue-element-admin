@@ -1,3 +1,4 @@
+import UserService from '@/service/User.js'
 const state = {
   token: '1234', // 用户的token
   name: '', // 用户的名字
@@ -21,8 +22,18 @@ const mutations = {
 }
 
 const actions = {
-  login () { // 登录的逻辑
-
+  login ({commit}, userInfo) { // 登录的逻辑
+    const userService = new UserService();
+    return new Promise((resolve, reject) => {
+      userService.userLogin(userInfo).then(res => {
+        let {token} = res
+        commit('SET_TOKEN', token)
+        localStorage.setItem('token', token)
+        resolve()
+      }).catch(err => {
+        reject(err)
+      })
+    })
   },
   getUserInfo ({ commit }) { // 获取用户的信息，包括头像、昵称、权限等
     return new Promise((resolve, reject) => {

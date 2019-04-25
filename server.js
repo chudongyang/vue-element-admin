@@ -22,10 +22,12 @@ app.use((req, res, next) => {
   }
   next();
 })
-
+let secret = 'vue-element-admin' // 加密的秘钥
 app.post('/user/login', (req, res) => {
   let {username, password} = req.body;
-  res.send({code: 0, data: true, message: 'success'})
+  let token = jwt.sign({username, password}, secret, {expiresIn: '1h'})
+  console.log(token);
+  res.send({code: 0, data: {token}, message: 'success'})
 })
 
 app.listen(3000, function () {

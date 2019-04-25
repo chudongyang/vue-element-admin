@@ -7,13 +7,16 @@ import NProgress from 'nprogress'
 
 // 配置，关闭加载微调器
 NProgress.configure({ showSpinner: false })
-
 // 定义不用重定向的白名单
+console.log(store)
 const whiteList = ['/login', '/auth-redirect']
 router.beforeEach(async (to, from, next) => {
   NProgress.start()
   // 这里需要判断token存不存在
-  const hasToken = false
+  const hasToken = localStorage.getItem('token')
+  if (hasToken) {
+    store.commit('user/SET_TOKEN', hasToken)
+  }
   if (hasToken) {
     if (to.path === '/login') {
       next({ path: '/' })

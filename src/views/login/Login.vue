@@ -1,6 +1,6 @@
 <template>
   <div class="login-container">
-    <el-form class="login-form" :model="loginModel" :rules="loginRules">
+    <el-form class="login-form" :model="loginModel" :rules="loginRules" ref="loginForm">
       <h3 class="login-title">系统登录</h3>
       <el-form-item prop="username">
         <span class="svg-container">
@@ -25,7 +25,7 @@
 </template>
 <script>
 import UserService from '@/service/User.js'
-
+import {mapActions} from 'vuex'
 export default {
   data () {
     // 必须在el-form-item组件上加上prop属性，校验规则才能生效
@@ -64,17 +64,21 @@ export default {
     this.userService = new UserService()
   },
   methods: {
+    ...mapActions('user', ['login']),
     togglePasswordType () { // 切换密码框的type类型，并改变图标的显示
       if (this.passwordType === 'password') {
         this.passwordType = 'text'
       } else {
-        console.log(1111111)
         this.passwordType = 'password'
       }
     },
     bindLogin () { // 点击登录
-      this.userService.userLogin(this.loginModel).then(res => {
-        console.log(res, 1111111)
+      this.$refs.loginForm.validate((valid) => {
+        if (valid) { // 每条验证规则都通过
+          this.login(this.loginModel).then(() => {
+            this.$router.replace('/')
+          })
+        }
       })
     }
   }

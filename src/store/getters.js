@@ -8,4 +8,4 @@ export const roles = state => state.user.roles
 
 export const avatar = state => state.user.avatar
 
-export const token = token => state.user.token
+export const token = state => state.user.token
